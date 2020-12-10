@@ -85,6 +85,7 @@
             this.PanelD.Name = "PanelD";
             this.PanelD.Size = new System.Drawing.Size(567, 426);
             this.PanelD.TabIndex = 4;
+            this.PanelD.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PanelD_MouseClick);
             // 
             // label1
             // 
