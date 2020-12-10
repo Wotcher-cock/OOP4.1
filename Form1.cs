@@ -146,10 +146,49 @@ namespace OOP4._1
                 }
             }
         }
+        private void remove_selection_circle(ref Storage stg)
+        {   // Снимает выделение у всех элементов хранилища
+            for (int i = 0; i < av; ++i)
+            {
+                if (!storag.check_emp(i))
+                {   // Вызываем функцию отрисовки круга
+                    paint_circle(Color.Navy, ref storag, i);
+                }
+            }
+        }
+
+        private void remove_selected_circle(ref Storage stg)
+        {   // Удаляет выделенные элементы из хранилища
+            for (int i = 0; i < av; ++i)
+            {
+                if (!storag.check_emp(i))
+                {
+                    if (storag.objects[i].color == Color.Red)
+                    {
+                        storag.deleter(i);
+                    }
+                }
+            }
+        }
 
         private void PanelD_MouseClick(object sender, MouseEventArgs e)
         {
-
+            Circle circle1 = new Circle(e.X, e.Y);
+            if (index == av)
+            {
+                storag.Dsize(ref av);
+            }
+            int c = check_circle(ref storag, av, circle1.x, circle1.y);
+            if (c != -1)
+            {
+                if (Control.ModifierKeys == Keys.Control)
+                {
+                    if (push == 0)
+                    {
+                        paint_circle(Color.)
+                    }
+                }
+            }
         }
     }
 }
