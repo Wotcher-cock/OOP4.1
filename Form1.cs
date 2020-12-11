@@ -152,7 +152,7 @@ namespace OOP4._1
             {
                 if (!storag.check_emp(i))
                 {   // Вызываем функцию отрисовки круга
-                    paint_circle(Color.Navy, ref storag, i);
+                    paint_circle(Color.Maroon, ref storag, i);
                 }
             }
         }
@@ -163,12 +163,34 @@ namespace OOP4._1
             {
                 if (!storag.check_emp(i))
                 {
-                    if (storag.objects[i].color == Color.Red)
+                    if (storag.objects[i].color == Color.Blue)
                     {
                         storag.deleter(i);
                     }
                 }
             }
+        }
+
+        private int check_circle(ref Storage stg, int size, int x, int y)
+        {   // Проверяет есть ли уже круг с такими же координатами в хранилище
+            if (stg.oc(size) != 0)
+            {
+                for (int i = 0; i < size; ++i)
+                {
+                    if (!stg.check_emp(i))
+                    {
+                        int x1 = stg.objects[i].x - 15;
+                        int x2 = stg.objects[i].x + 15;
+                        int y1 = stg.objects[i].y - 15;
+                        int y2 = stg.objects[i].y + 15;
+
+                        // Если круг есть, возвращет индекс круга в хранилище
+                        if ((x1 <= x && x <= x2) && (y1 <= y && y <= y2))
+                            return i;
+                    }
+                }
+            }
+            return -1;
         }
 
         private void PanelD_MouseClick(object sender, MouseEventArgs e)
@@ -185,8 +207,71 @@ namespace OOP4._1
                 {
                     if (push == 0)
                     {
-                        paint_circle(Color.)
+                        paint_circle(Color.Maroon, ref storag, indexC);
+                        push = 1;
                     }
+                    paint_circle(Color.Blue, ref storag, c);
+                }
+                else
+                {
+                    remove_selection_circle(ref storag);
+                    paint_circle(Color.Blue, ref storag, c);
+                }
+                return;
+            }
+            storag.add_object(index, ref circle1, av,  ref indexC);
+            remove_selection_circle(ref storag);
+            paint_circle(Color.Blue, ref storag, indexC);
+            ++index;
+            push = 0;
+        }
+
+        private void ClearB_Click(object sender, EventArgs e)
+        {
+            PanelD.Refresh(); // Перерисовывем панель paint_box
+            for (int i = 0; i < av; ++i)
+            {
+                if (!storag.check_emp(i))
+                {   // Меняем is_drawed на false
+                    storag.objects[i].drawed = false;
+                }
+            }
+        }
+
+        private void ClearSB_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < av; ++i)
+            {
+                storag.objects[i] = null;
+            }
+            index = 0;
+        }
+
+        private void DeleteCB_Click(object sender, EventArgs e)
+        {
+            remove_selected_circle(ref storag);
+            PanelD.Refresh();
+            if (storag.oc(av) != 0)
+            {
+                for (int i = 0; i < av; ++i)
+                {
+                    paint_circle(Color.Maroon, ref storag, i);
+                }
+            }
+        }
+
+        private void ShowB_Click(object sender, EventArgs e)
+        {
+            PanelD.Refresh();
+            if (storag.oc(av) != 0)
+            {
+                for (int i = 0; i < av; ++i)
+                {
+                    if (!storag.check_emp(i))
+                    {   // Меняем is_drawed на true
+                        storag.objects[i].drawed = true;
+                    }
+                    paint_circle(Color.Maroon, ref storag, i);
                 }
             }
         }

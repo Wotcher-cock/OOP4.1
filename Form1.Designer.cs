@@ -46,6 +46,7 @@
             this.ShowB.TabIndex = 0;
             this.ShowB.Text = "Показать объекты из хранилища";
             this.ShowB.UseVisualStyleBackColor = false;
+            this.ShowB.Click += new System.EventHandler(this.ShowB_Click);
             // 
             // DeleteCB
             // 
@@ -56,6 +57,7 @@
             this.DeleteCB.TabIndex = 1;
             this.DeleteCB.Text = "Удалить выделенные элементы везде\r\n";
             this.DeleteCB.UseVisualStyleBackColor = false;
+            this.DeleteCB.Click += new System.EventHandler(this.DeleteCB_Click);
             // 
             // ClearSB
             // 
@@ -66,6 +68,7 @@
             this.ClearSB.TabIndex = 2;
             this.ClearSB.Text = "Удалить элементы из хранилища";
             this.ClearSB.UseVisualStyleBackColor = false;
+            this.ClearSB.Click += new System.EventHandler(this.ClearSB_Click);
             // 
             // ClearB
             // 
@@ -76,6 +79,7 @@
             this.ClearB.TabIndex = 3;
             this.ClearB.Text = "Стереть все с панели";
             this.ClearB.UseVisualStyleBackColor = false;
+            this.ClearB.Click += new System.EventHandler(this.ClearB_Click);
             // 
             // PanelD
             // 
